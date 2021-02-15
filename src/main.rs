@@ -1,8 +1,21 @@
+// rand クレートを外部依存として使用する
+extern crate rand;
+
 // 標準の IO ライブラリをインポート
 use std::io;
+// Rng トレイトは、乱数生成器が実装するメソッドを定義しているもの
+use rand::Rng;
 
 fn main() {
     println!("Guess the number!");
+
+    // thread_rng() 関数は乱数生成器を返す関数
+    // 乱数生成器の gen_range メソッドは、Rng トレイトで定義されているメソッド
+    // gen_range(1, 101) で1以上101未満の乱数を生成している
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+
+    println!("The secret number is: {}", secret_number);
+
     println!("Please input your guess.");
 
     //--------------------------------------------------------------------------
